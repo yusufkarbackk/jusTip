@@ -1,0 +1,84 @@
+$roboto : 'Roboto', sans-serif;
+$quicksand : 'Quicksand', sans-serif;
+
+.navbar{
+    background-color: #ffb700;
+    .navbar-brand{
+        .nav-image{
+            max-height: 60px;
+        }
+    }
+    .navbar-nav{
+        .nav-item{
+            .nav-link{
+                font-family: $roboto;
+                color: white;
+            }
+        }
+    }
+}
+.hero-section{
+    height: 100vh;
+    .hero-image{
+        max-width: 100%;
+        width: 500px;
+        height: auto;
+    }
+    .hero-text{
+        h1{
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+        }
+        
+        .bait{
+            background-color: red;
+            border-radius: 50px;
+            h3{
+                font-family: $roboto;
+                font-weight: 200;
+                color: white;
+                font-weight: 500;
+                font-size: 30px;
+                line-height: 15px;
+
+            }
+
+        }
+    }
+}
+
+.stores-section{
+    .card{
+        border-radius: 30px;
+    }
+}
+
+.store-header{
+    h2{
+        font-family: $quicksand;
+        font-weight:500;
+    }
+    p{
+        font-family: $roboto;
+    }
+}
+
+.menus{
+    img{
+        width: 380px;
+        max-width: 100%;
+        height: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-radius: 30px;
+        
+    }
+}
+
+.question-hero{
+    .question-img{
+        width: 600px;
+        max-width: 100%;
+        height: auto;
+    }
+}
