@@ -15,7 +15,12 @@ class CreateTokTable extends Migration
     {
         Schema::create('tokos', function (Blueprint $table) {
             $table->id();
+            $table->text('nama');
+            $table->text('lokasi');
+            $table->time('open');
+            $table->time('close');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

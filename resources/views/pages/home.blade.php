@@ -60,33 +60,23 @@
     class="container d-md-flex d-lg-flex d-sm-flex justify-content-between align-content-center stores-section"
   >
     <a href="embun.html">
-      <div class="card mb-3 rounded shadow" style="max-width: 500px">
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <img src="images/embun.jpg" class="card-img" alt="..." />
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">Embun</h5>
-                <p class="card-text">Opens: 10.00 - 22.00</p>
+        @foreach ($tokos as $toko)
+        <div class="card mb-3 rounded shadow" style="max-width: 500px">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="images/embun.jpg" class="card-img" alt="..." />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                <h5 class="card-title">{{$toko->nama}}</h5>
+                <p class="card-text">Opens: {{$toko->open}} - {{$toko->close}}</p>
+                <p class="card-text">Lokasi: {{$toko->lokasi}}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        @endforeach      
     </a>
-    <div class="card mb-3 rounded shadow" style="max-width: 500px">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="images/cikaracak.jpg" class="card-img" alt="..." />
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Cikaracak</h5>
-            <p class="card-text">Opens: 07.00 - 14.00</p>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
   <div class="container">
       <p class="text-center text-muted mt-5 copyright">
