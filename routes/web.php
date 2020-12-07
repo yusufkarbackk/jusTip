@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\Admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,14 @@ Route::get('/', function () {
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/menu/{nama}', [MenuController::class, 'menu'])->name('menu');
+
+
+Route::prefix('admin')
+    ->namespace('Admin')
+    ->group(function(){
+        Route::get('/', [AdminController::class, 'index'])->name('admin');
+    });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
