@@ -29,7 +29,10 @@ Route::get('/menu/{nama}', [MenuController::class, 'menu'])->name('menu');
 Route::prefix('admin')
     ->namespace('Admin')
     ->group(function(){
-        Route::get('/', [AdminController::class, 'index'])->name('admin');
+        Route::get('/', [AdminController::class, 'index'])
+        ->name('admin')
+        ->middleware('auth')
+        ;
     });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
