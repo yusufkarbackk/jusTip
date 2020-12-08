@@ -11,4 +11,6 @@ class Toko extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $fillable = ['nama', 'lokasi', 'open', 'close'];
 }

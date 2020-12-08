@@ -23,7 +23,15 @@
 
 <body id="page-top">
 
-    @yield('content')
+    
+    <div id="wrapper">
+        @include('includes.admin.sidebar')
+        @yield('content')
+
+    </div>
+
+    
+
 
   @include('includes.admin.script')
 

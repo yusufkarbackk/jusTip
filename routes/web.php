@@ -33,6 +33,8 @@ Route::prefix('admin')
         ->name('admin')
         ->middleware('auth')
         ;
+        Route::resource('Toko', TokoController::class)
+        ->middleware('auth');
     });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
