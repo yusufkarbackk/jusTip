@@ -31,12 +31,12 @@
         <div class="card mb-3 rounded shadow" style="max-width: 500px">
             <div class="row no-gutters">
               <div class="col-md-4">
-                <img src="images/embun.jpg" class="card-img" alt="..." />
+              <img src="{{url('store_image/' . $toko->TokoGallery->foto_toko)}}" class="card-img" alt="..." />
               </div>
               <div class="col-md-8">
                 <div class="card-body">
                 <h5 class="card-title">{{$toko->nama}}</h5>
-                <p class="card-text">Opens: {{$toko->open}} - {{$toko->close}}</p>
+                <p class="card-text">Opens: {{date("G:i", strtotime($toko->open))}} - {{date("G:i", strtotime($toko->close))}}</p>
                 <p class="card-text">Lokasi: {{$toko->lokasi}}</p>
                 </div>
               </div>

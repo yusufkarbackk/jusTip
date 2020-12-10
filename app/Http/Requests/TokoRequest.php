@@ -28,7 +28,6 @@ class TokoRequest extends FormRequest
             'lokasi' => 'required',
             'open' => 'required',
             'close' => 'required',
-            'promo' => 'required',
         ];
     }
 }

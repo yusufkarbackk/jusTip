@@ -17,6 +17,6 @@ class TokoGallery extends Model
 
     public function toko()
     {
-        return $this->belongsTo(Toko::class, 'toko_id', 'id');
+        return $this->belongsTo(Toko::class, 'toko_id', 'id')->withTrashed();
     }
 }

@@ -24,10 +24,10 @@
           </tr>
         </thead>
         <tbody>
+            <?php $i = 1 ?>
             @foreach ($tokos as $toko)
-            dd($tokos)
             <tr>
-            <th class="text-center" scope="row">{{$toko->id}}</th>
+            <th class="text-center" scope="row"><?php echo($i) ?></th>
             <td class="text-center">
                 <img width="100px" src="{{url('store_image/' . $toko->TokoGallery->foto_toko)}}" alt="gambar toko">  
             </td>
@@ -38,19 +38,35 @@
             <td>
                 <div class="d-flex justify-content-center">
                     <div class="mr-3">
-                        <form action="" method="post">
-                            <button type="button" class="btn btn-primary">Update</button>
-                        </form>
+                        <a href="" class="text-white">
+                        <form action="{{route('Toko.edit', $toko->id)}}" method="GET">
+                                @csrf
+                                <button class="btn btn-primary">
+                                    Update
+                                </button>
+                            </form>
+                        </a>
                     </div>
                     <div>
+                        <a href="" class="text-white">
+                            <form action="{{route('Toko.destroy', $toko->id)}}" method="POST">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </form>
+                            </a>
+                    </div>
+                    <div class="ml-3">
                         <form action="" method="post">
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-info">Menu</button>
                         </form>
                     </div>
                 </div>
             </td>
-    
             </tr>
+            <?php $i++ ?>
             @endforeach
         </tbody>
     </table>
