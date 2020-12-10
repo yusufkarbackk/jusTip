@@ -14,6 +14,7 @@
         <thead>
           <tr>
             <th class="text-center" scope="col">No</th>
+            <th class="text-center" scope="col">Gambar</th>
             <th class="text-center" scope="col">Nama Toko</th>
             <th class="text-center" scope="col">Jam Buka</th>
             <th class="text-center" scope="col">Jam Tutup</th>
@@ -24,8 +25,12 @@
         </thead>
         <tbody>
             @foreach ($tokos as $toko)
+            dd($tokos)
             <tr>
-            <th class="text-center" scope="row">{{$no}}</th>
+            <th class="text-center" scope="row">{{$toko->id}}</th>
+            <td class="text-center">
+                <img width="100px" src="{{url('store_image/' . $toko->TokoGallery->foto_toko)}}" alt="gambar toko">  
+            </td>
             <td class="text-center">{{$toko->nama}}</td>
             <td class="text-center">{{$toko->open}}</td>
             <td class="text-center">{{$toko->close}}</td>

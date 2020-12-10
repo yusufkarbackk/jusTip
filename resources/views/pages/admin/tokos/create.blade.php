@@ -7,28 +7,61 @@
     </div>
 <form action="{{route('Toko.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
-    @method("POST")
         <div class="form-group">
           <label for="nama">Nama Toko</label>
-          <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Toko">
+          <input type="text" class="form-control @error ('nama') is invalid @enderror" name="nama" id="nama" placeholder="Nama Toko" value="{{old('nama')}}"></input>
+          @error('nama')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+          @enderror
         </div>
         <div class="form-group">
-          <label for="alamat">Alamat</label>
-          <textarea class="form-control" id="alamat" rows="3" name="alamat"></textarea>
+          <label for="lokasi">Alamat</label>
+          <textarea class="form-control" type="text" id="lokasi" rows="3" name="lokasi" value="{{old('lokasi')}}"></textarea>
+          @error('lokasi')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
         <div class="form-group">
             <label for="buka">Jam Buka</label>
-            <input type="time" class="form-control" id="buka" name="buka"></input>
+            <input type="time" class="form-control" id="buka" name="open" value="{{old('open')}}"></input>
+            @error('open')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
         <div class="form-group">
             <label for="tutup">Jam Tutup</label>
-            <input type="time" class="form-control" id="tutup" name="tutup"></input>
+            <input type="time" class="form-control" id="tutup" name="close" value="{{old('close')}}"></input>
+            @error('close')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="promo">Promo</label>
+            <input type="text" class="form-control" id="promo" name="promo" value="{{old('promo')}}"></input>
+            @error('promo')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
         <div class="form-group py-2">
-            <label for="foto">Jam Tutup</label>
-            <input type="file" class="form-control pt-2 pb-2" id="foto" name="foto_toko"></input>
+            <label for="foto">Foto</label>
+            <input type="file" class="form-control pt-2 pb-2" id="foto" name="foto_toko" value="{{old('foto_toko')}}"></input>
+            @error('foto_toko')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
-        <button type="button" class="btn btn-primary btn-lg btn-block">
+        <button type="submit" class="btn btn-primary btn-lg btn-block">
             Buat
         </button>
       </form>
