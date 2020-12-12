@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MenuController;
 use App\Http\Controllers\Admin\AdminController;
 
 /*
@@ -34,6 +33,8 @@ Route::prefix('admin')
         ->middleware('auth')
         ;
         Route::resource('Toko', TokoController::class)
+        ->middleware('auth');
+        Route::resource('Menu', MenuController::class)
         ->middleware('auth');
     });
 

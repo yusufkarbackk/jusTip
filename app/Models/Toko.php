@@ -19,4 +19,9 @@ class Toko extends Model
     {
         return $this->hasOne(TokoGallery::class, 'toko_id', 'id');
     }
+
+    public function menu()
+    {
+        return $this->hasMany(Menu::class, 'toko_id', 'id');
+    }
 }
