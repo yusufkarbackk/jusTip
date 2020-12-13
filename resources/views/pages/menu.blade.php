@@ -19,18 +19,22 @@
     <div
       class="container mt-5 d-flex flex-wrap flex-md-wrap justify-content-around menus"
     >
-      <div>
-      <img src="{{url('images/embun1.jpg')}}" alt="" class="" />
+      @foreach ($menus as $menu)
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+          <img src="{{url('menu_image/' . $menu->MenuGallery->foto_menu)}}" width="50px" class="card-img img-fluid" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{$menu->nama}}</h5>
+            <p class="card-text">{{$menu->deskripsi}}</p>
+            <p class="card-text">Rp{{number_format($menu->harga)}}</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <img src="images/embun2.jpg" alt="" class="" />
-      </div>
-      <div>
-        <img src="images/embun3.jpg" alt="" class="" />
-      </div>
-      <div>
-        <img src="images/embun4.jpg" alt="" class="" />
-      </div>
+      @endforeach
     </div>
   
   <div class="container">

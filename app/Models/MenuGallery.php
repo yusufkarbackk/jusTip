@@ -13,8 +13,9 @@ class MenuGallery extends Model
     use softDeletes;
 
     protected $fillable = ['foto_menu', 'menu_id'];
+    protected $table = 'MenuGallery';
 
-    public function menu()
+    public function MenuGallery()
     {
         return $this->belongsTo(Menu::class, 'menu_id', 'id');
     }

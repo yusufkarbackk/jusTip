@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\MenuBaruController;
+use App\Http\Controllers\MenuUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +24,8 @@ Route::get('/', function () {
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/menu/{nama}', [MenuController::class, 'menu'])->name('menu');
+Route::get('/menu/{id}', [MenuUserController::class, 'menu'])->name('menu');
+Route::get('/menu/buat/{id}', [MenuBaruController::class, 'MenuBaru'])->name('MenuBaru');
 
 
 Route::prefix('admin')

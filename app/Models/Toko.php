@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\TokoGallery;
+use App\Models\Menu;
+use App\Models\MenuGallery;
+
 
 
 class Toko extends Model
@@ -24,4 +27,5 @@ class Toko extends Model
     {
         return $this->hasMany(Menu::class, 'toko_id', 'id');
     }
+
 }

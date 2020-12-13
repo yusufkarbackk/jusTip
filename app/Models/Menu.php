@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
-use App\Http\Models\Toko;
+use App\Models\Toko;
+use App\Models\MenuGallery;
 
 class Menu extends Model
 {
@@ -22,7 +22,7 @@ class Menu extends Model
 
     public function toko()
     {
-        return $this->belongsTo(Toko::class, 'toko_id', 'id');
+        return $this->belongsTo(Toko::class, 'toko_id', 'id')->withTrashed();
     }
 
 }

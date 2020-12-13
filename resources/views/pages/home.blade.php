@@ -27,7 +27,7 @@
     class="container d-md-flex d-lg-flex d-sm-flex justify-content-between align-content-center stores-section"
   >
         @foreach ($tokos as $toko)
-      <a href="{{route('menu', $toko->nama )}}">
+      <a href="{{route('menu', $toko->id )}}">
         <div class="card mb-3 rounded shadow" style="max-width: 500px">
             <div class="row no-gutters">
               <div class="col-md-4">

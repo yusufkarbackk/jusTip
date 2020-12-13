@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Toko;
 use App\Models\Menu;
 use App\Models\MenuGallery;
+use Image;
 
 
 
@@ -28,8 +29,10 @@ class MenuController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.menus.create');
-
+        $tokos = Toko::all();
+        return view('pages.admin.menus.create', [
+            'tokos' => $tokos
+        ]);
     }
 
     /**
@@ -40,7 +43,31 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //create menu
+        $menu = new Menu;
+        $menu->toko_id = $request->toko_id;
+        $menu->nama = $request->nama;
+        $menu->harga = $request->harga;
+        $menu->deskripsi = $request->deskripsi;
+        $menu->kategori = $request->kategori;
+        
+        $menu->save();
+
+
+        //create MenuGallery
+        $menu_gallery= new MenuGallery;
+        $menu_gallery->menu_id = $menu->id;
+        $image = $request->foto_menu;
+        $namafile = time() . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(300, "auto", function ($constraint) {
+            $constraint->aspectRatio();
+        })->save('menu_image/' . $namafile);
+        $menu_gallery->foto_menu = $namafile;
+
+        $menu_gallery->save();
+
+        return redirect('/admin/Toko');
+
     }
 
     /**
@@ -51,11 +78,6 @@ class MenuController extends Controller
      */
     public function show($id)
     {
-        $menus = Toko::with(['menu', 'menu_gallery'])->where('toko_id', $id);
-
-        return view('pages.admin.menus.index', [
-            'menus' => $menus
-        ]);
 
     }
 
@@ -67,7 +89,10 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $menu = Menu::find($id);
+        return view('pages.admin.menus.edit', [
+            'menu' => $menu,
+        ]);
     }
 
     /**
@@ -79,7 +104,28 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $toko = Menu::where('id', $id)
+            ->update([
+                'nama' => $request->nama,
+                'deskripsi' => $request->deskripsi,
+                'harga' => $request->harga,
+                'kategori' => $request->kategori,
+                'promo' => $request->promo,
+                'toko_id' => $request->toko_id
+            ]);
+
+        $menu_gallery = new MenuGallery;
+        $menu_gallery->menu_id = $id;
+        $image = $request->foto_menu;
+        $namafile = time() . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(300, "auto", function ($constraint) {
+            $constraint->aspectRatio();
+        })->save('menu_image/' . $namafile);
+        $menu_gallery->foto_menu = $namafile;
+
+        $menu_gallery->save();
+        return redirect('/admin/Toko');
+
     }
 
     /**

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Toko;
 use App\Models\TokoGallery;
+use App\Models\Menu;
+use App\Models\MenuGallery;
+
 use App\Http\Requests\TokoRequest;
 use Image;
 use Carbon\Carbon;
@@ -84,7 +87,10 @@ class TokoController extends Controller
      */
     public function show($id)
     {
-        //
+        $menus = Menu::with(['MenuGallery'])->where('toko_id', $id)->get();
+        return view('pages.admin.menus.index', [
+            'menus' => $menus,
+        ]);
     }
 
     /**
