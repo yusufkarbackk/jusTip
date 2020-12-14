@@ -8,7 +8,6 @@ use App\Models\Toko;
 use App\Models\TokoGallery;
 use App\Models\Menu;
 use App\Models\MenuGallery;
-
 use App\Http\Requests\TokoRequest;
 use Image;
 use Carbon\Carbon;
@@ -114,7 +113,7 @@ class TokoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TokoRequest $request, $id)
     {
         $toko = Toko::where('id', $id)
             ->update([

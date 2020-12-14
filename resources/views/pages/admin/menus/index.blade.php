@@ -48,7 +48,7 @@
                         </div>
                         <div>
                             <a href="" class="text-white">
-                                <form action="" method="POST">
+                                <form action="{{route('Menu.destroy', $menu->id)}}" method="POST">
                                         @csrf
                                         @method("DELETE")
                                         <button class="btn btn-danger">

@@ -24,10 +24,10 @@ class TokoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama' => 'required',
-            'lokasi' => 'required',
-            'open' => 'required',
-            'close' => 'required',
+            'nama' => 'required|string',
+            'lokasi' => 'required|string',
+            'open' => 'required|numeric',
+            'close' => 'required|numeric',
         ];
     }
 }

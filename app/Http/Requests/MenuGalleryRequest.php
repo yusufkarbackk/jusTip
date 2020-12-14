@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TokoGalleryRequest extends FormRequest
+class MenuGalleryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class TokoGalleryRequest extends FormRequest
     public function rules()
     {
         return [
-            'toko_id' => 'required|numeric',
-            'foto_toko' => 'required|mimes:jpg,png',
+            'foto_menu' => 'required|mimes:jpg,png',
+            'menu_id' => 'required|numeric',
         ];
     }
 }

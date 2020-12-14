@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\MenuRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Toko;
 use App\Models\Menu;
@@ -41,7 +42,7 @@ class MenuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MenuRequest $request)
     {
         //create menu
         $menu = new Menu;
@@ -102,7 +103,7 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MenuRequest $request, $id)
     {
         $toko = Menu::where('id', $id)
             ->update([
@@ -110,7 +111,6 @@ class MenuController extends Controller
                 'deskripsi' => $request->deskripsi,
                 'harga' => $request->harga,
                 'kategori' => $request->kategori,
-                'promo' => $request->promo,
                 'toko_id' => $request->toko_id
             ]);
 
@@ -136,6 +136,9 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $menu = Menu::find($id);
+        $menu->delete();
+        return redirect('/admin/Toko');
+
     }
 }
